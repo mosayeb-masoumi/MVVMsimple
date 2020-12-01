@@ -24,9 +24,19 @@ public class MainActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         MainViewModel viewModel = new MainViewModel();
-        viewModel.setMutableUsers();
+//        viewModel.setMutableUsers();
+//
+//        viewModel.getMutableUsers().observe(this, new Observer<List<User>>() {
+//            @Override
+//            public void onChanged(List<User> users) {
+//                binding.recyclerview.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+//                adapter = new Adapter(users, MainActivity.this);
+//                binding.recyclerview.setAdapter(adapter);
+//            }
+//        });
 
-        viewModel.getMutableUsers().observe(this, new Observer<List<User>>() {
+
+        viewModel.getUsers().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
                 binding.recyclerview.setLayoutManager(new LinearLayoutManager(MainActivity.this));
@@ -34,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
                 binding.recyclerview.setAdapter(adapter);
             }
         });
-
 
 
     }
